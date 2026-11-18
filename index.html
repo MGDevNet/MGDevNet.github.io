@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manuel Garcia Bouza — Network & Cloud Infrastructure Administrator</title>
-<meta name="description" content="Portfolio of Manuel Garcia Bouza — Network, Cloud & DevOps infrastructure projects: Proxmox/Ceph homelab, Cisco Ansible automation, Prometheus/Grafana/Zabbix monitoring." />
+<meta name="description" content="Portfolio of Manuel Garcia Bouza — Network, Cloud & DevOps infrastructure projects: Proxmox/Ceph homelab, Cisco Ansible automation, Prometheus/Grafana/Zabbix monitoring, and IT &amp; automation services for small businesses." />
 <style>
   :root{
     --navy:#1f3864;
@@ -122,6 +122,16 @@
     padding:14px 18px;font-size:0.9rem;color:var(--text-dim);
   }
 
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:32px;}
+  .service-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;}
+  .service-card h3{font-size:1rem;color:var(--accent);margin-bottom:8px;}
+  .service-card p{font-size:0.9rem;color:var(--text-dim);}
+  .cta-box{
+    background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:26px;
+    text-align:center;
+  }
+  .cta-box p{color:var(--text-dim);margin-bottom:18px;}
+
   footer{
     border-top:1px solid var(--border);padding:40px 0;text-align:center;
     color:var(--text-dim);font-size:0.85rem;
@@ -140,7 +150,7 @@
   <div class="wrap">
     <img class="avatar" src="https://avatars.githubusercontent.com/u/79100574?v=4" alt="Manuel Garcia Bouza" />
     <h1>Manuel Garcia Bouza</h1>
-    <p class="tagline">Network &amp; Cloud Infrastructure Engineer · Systems Administration &amp; Automation · Cybersecurity</p>
+    <p class="tagline">Network &amp; Cloud Infrastructure Administrator · Systems Administration &amp; Automation · Cybersecurity</p>
     <div class="contact-row">
       <span>Pinellas Park, FL</span>
       <a href="mailto:garciabouza90@gmail.com">garciabouza90@gmail.com</a>
@@ -149,6 +159,7 @@
     </div>
     <div class="btn-row">
       <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn ghost" href="#services">Hire Me</a>
       <a class="btn ghost" href="https://github.com/MGDevNet" target="_blank" rel="noopener">GitHub Profile</a>
     </div>
   </div>
@@ -159,6 +170,7 @@
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
+    <a href="#services">Services</a>
     <a href="#experience">Experience</a>
     <a href="#certifications">Certifications</a>
   </div>
@@ -185,7 +197,7 @@
     <div class="skills-grid">
       <div class="skill-card">
         <h3>Networking</h3>
-        <p>Cisco IOS, VLANs, inter-VLAN routing, 802.1Q trunking, EtherChannel, Router-on-a-Stick, STP, TCP/IP, VPN, DNS, DHCP</p>
+        <p>Cisco IOS, Meraki MX HA gateways, UniFi, VLANs, inter-VLAN routing, 802.1Q trunking, EtherChannel, Router-on-a-Stick, STP, TCP/IP, VPN, DNS, DHCP</p>
       </div>
       <div class="skill-card">
         <h3>Cloud &amp; Virtualization</h3>
@@ -197,11 +209,15 @@
       </div>
       <div class="skill-card">
         <h3>Systems &amp; Storage</h3>
-        <p>Linux (Ubuntu/CentOS), Windows Server, Active Directory, ZFS/TrueNAS, NFS, Docker &amp; Docker Compose</p>
+        <p>Linux (Ubuntu/CentOS), Windows Server, Active Directory (150 users), ZFS/TrueNAS, NFS, Docker &amp; Docker Compose</p>
       </div>
       <div class="skill-card">
         <h3>Monitoring &amp; Observability</h3>
         <p>Prometheus, Alertmanager, Grafana, Zabbix, Node Exporter, custom dashboards</p>
+      </div>
+      <div class="skill-card">
+        <h3>Physical &amp; Wireless</h3>
+        <p>Wireless AP deployment (60+ units), PoE IP camera/NVR systems, structured cabling (Cat5E/Cat6/Coax), rack builds, low-voltage systems</p>
       </div>
       <div class="skill-card">
         <h3>Security</h3>
@@ -214,7 +230,7 @@
 <section id="projects">
   <div class="wrap">
     <h2 class="section-title">Projects</h2>
-    <p class="section-sub">Self-built infrastructure projects demonstrating hands-on, current DevOps and networking skills.</p>
+    <p class="section-sub">Production, client and self-built projects demonstrating hands-on, current DevOps, networking and automation skills.</p>
     <div class="projects-grid">
 
       <div class="project-card">
@@ -263,6 +279,34 @@
       </div>
 
       <div class="project-card">
+        <h3>Conexus Insurance — Bilingual Agency Website <span style="color:var(--accent);font-size:0.7rem;font-weight:700;">· CLIENT PROJECT</span></h3>
+        <p class="desc">Designed, built and host a bilingual (English/Spanish) website for a commercial trucking
+        insurance agency. Clients can request quotes, policy changes and COI certificates, report and track
+        claims, and make payments online, all through one unified form backend. Served through Cloudflare, with
+        an automation roadmap for intake tracking, auto-acknowledgements and renewal reminders.</p>
+        <div class="tag-row">
+          <span class="tag">React</span><span class="tag">Vite</span><span class="tag">i18n EN/ES</span>
+          <span class="tag">Cloudflare</span><span class="tag">Forms API</span><span class="tag">Automation</span>
+        </div>
+        <div class="links">
+          <a href="https://conexusagency.com" target="_blank" rel="noopener">Live Site →</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <h3>AI Agent Operations Team</h3>
+        <p class="desc">An AI orchestrator that sends work to seven specialist agents (network automation,
+        homelab, workplace IT, security review, career, client automation, personal admin). Each agent has its
+        own scope, safety rules, persistent knowledge base and status log. Risky actions like live network
+        changes, emails or payments always need human approval, and a security agent reviews every repo before
+        it goes public.</p>
+        <div class="tag-row">
+          <span class="tag">AI agents</span><span class="tag">Claude Code</span><span class="tag">Orchestration</span>
+          <span class="tag">Automation</span><span class="tag">Guardrails</span>
+        </div>
+      </div>
+
+      <div class="project-card">
         <h3>Monitoring Stack — Prometheus, Grafana &amp; Zabbix</h3>
         <p class="desc">Full observability stack (Prometheus, Alertmanager, Grafana, Zabbix + MySQL, Node
         Exporter) deployed across 3 dedicated VMs from bare Ubuntu using a single-source-of-truth Ansible
@@ -281,6 +325,40 @@
   </div>
 </section>
 
+<section id="services">
+  <div class="wrap">
+    <h2 class="section-title">Services — Work With Me</h2>
+    <p class="section-sub">IT and automation for small businesses, especially insurance agencies, trucking
+    companies and other small teams that need things to just work. English or Spanish, remote or on-site
+    in the Tampa Bay area. <em>Se habla español.</em></p>
+    <div class="services-grid">
+      <div class="service-card">
+        <h3>Websites &amp; Online Forms</h3>
+        <p>Bilingual business websites with quote, request and payment forms that send everything to one place, so nothing gets lost in an inbox.</p>
+      </div>
+      <div class="service-card">
+        <h3>Workflow &amp; AI Automation</h3>
+        <p>Automatic intake tracking, client acknowledgements, reminders and drafted replies, with a person always approving what goes out.</p>
+      </div>
+      <div class="service-card">
+        <h3>Office Network &amp; Wi-Fi</h3>
+        <p>Firewalls, switches, VLANs, Wi-Fi, cameras and cabling, designed, installed and documented.</p>
+      </div>
+      <div class="service-card">
+        <h3>Monitoring &amp; Backups</h3>
+        <p>Alerts before something breaks, and backups that are tested for real, so a bad day doesn't become a lost week.</p>
+      </div>
+    </div>
+    <div class="cta-box">
+      <p>Have a process that eats your team's time, or a network that keeps acting up? Tell me about it.</p>
+      <div class="btn-row" style="margin-top:0;">
+        <a class="btn primary" href="mailto:garciabouza90@gmail.com?subject=IT%20%2F%20automation%20project">Email Me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/manuel-g-448984183/" target="_blank" rel="noopener">Message on LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="experience" class="alt">
   <div class="wrap">
     <h2 class="section-title">Experience</h2>
@@ -289,9 +367,13 @@
         <h3>IT Specialist (Multi-Role) — Weee! Inc.</h3>
         <div class="meta">Tampa, FL · March 2025 – Present</div>
         <ul>
-          <li>Planned and built two warehouse facilities from the ground up, including full network infrastructure, structured cabling, rack installation, and equipment commissioning.</li>
+          <li>Deployed 3 warehouse facilities from the ground up to full operational readiness, as sole owner of network design, structured cabling, rack builds, wireless and camera coverage, workstation/printer setup, and equipment commissioning.</li>
+          <li>Led a formal high-availability gateway migration (Meraki MX95 → MX105) at the Tampa site, with full technical documentation and change records for stakeholder review.</li>
+          <li>Configured and supported a UniFi Dream Machine Pro with a static WAN and routed public IP block; resolved point-to-point link issues with the carrier at the demarc.</li>
+          <li>Built zero-touch MAAS provisioning for packing-station kiosks, now in production.</li>
           <li>Configured and deployed 60+ wireless access points across three warehouse locations, ensuring enterprise-grade wireless coverage and segmentation.</li>
           <li>Installed and commissioned 60+ IP security cameras with NVR integration, providing full-perimeter surveillance and access control visibility.</li>
+          <li>Built monitoring infrastructure (Prometheus, Grafana, Zabbix) from the ground up and proposed a company-wide rollout to headquarters.</li>
           <li>Served as primary Tier 2 support escalation point, diagnosing and resolving network connectivity, hardware, and software issues across multi-site operations.</li>
           <li>Managed network access control, ensuring only authorized devices and users accessed internal network services per security policy.</li>
           <li>Coordinated facilities relocations, including independent forklift operation to reposition heavy storage rack systems.</li>
@@ -303,6 +385,8 @@
         <ul>
           <li>Administered a Cisco environment of 5 routers and 10 switches; VLANs, inter-VLAN routing, STP, VPN tunnels.</li>
           <li>Managed 30 AWS EC2 instances, a production database cluster, IAM roles, S3 storage, and VPC networking; maintained 99.9% uptime SLA.</li>
+          <li>Deployed and maintained Active Directory for 150 users, managing group policy, authentication, and access control.</li>
+          <li>Deployed infrastructure automation using Ansible playbooks for configuration management and server provisioning.</li>
           <li>Implemented and maintained backup and disaster recovery systems, conducting regular restoration drills to verify RTO/RPO compliance.</li>
           <li>Monitored network and server performance using Zabbix and Grafana dashboards; proactively identified and resolved infrastructure bottlenecks.</li>
           <li>Performed Linux server hardening: SSH key management, firewall rules (iptables/UFW), and audit logging.</li>
@@ -331,6 +415,7 @@
       <div class="cert-card">Google IT Support Professional Certificate</div>
       <div class="cert-card">Google Cybersecurity Professional Certificate</div>
       <div class="cert-card">Certified Security Analyst (CSA)</div>
+      <div class="cert-card">CCNA 200-301 — in progress</div>
       <div class="cert-card">B.S. Information Technology — University of Informatic Sciences, 2014</div>
     </div>
   </div>
