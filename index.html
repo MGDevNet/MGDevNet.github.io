@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manuel Garcia Bouza — Network & Cloud Infrastructure Administrator</title>
-<meta name="description" content="Manuel Garcia Bouza: network and infrastructure work from the rack to the routing table. Field-work gallery (MDF/IDF builds, fiber, Cisco/Meraki/UniFi), Proxmox/Ceph homelab, Cisco Ansible automation, monitoring, and IT services for small businesses." />
+<meta name="description" content="Manuel Garcia Bouza: network and infrastructure work from the rack to the routing table. Field-work gallery (MDF/IDF builds, fiber, Cisco/Meraki/UniFi), business results, Proxmox/Ceph homelab, Cisco Ansible automation and monitoring." />
 <meta property="og:title" content="Manuel Garcia Bouza — Network & Infrastructure" />
 <meta property="og:description" content="From the rack to the routing table: field work, automation and infrastructure projects." />
 <meta property="og:image" content="https://mgdevnet.github.io/img/work/cisco-catalyst-9300-siemon.jpg" />
@@ -97,6 +97,21 @@
   .lb-next{right:18px;top:50%;transform:translateY(-50%);}
   @media (max-width:820px){.lb-inner{grid-template-columns:1fr;}.lb-inner img{max-height:62vh;}.lb-prev,.lb-next{top:auto;bottom:18px;transform:none;}}
 
+  /* ---------- Impact ---------- */
+  .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-bottom:22px;}
+  .impact-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;position:relative;overflow:hidden;}
+  .impact-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent-2);}
+  .impact-card b{display:block;font-size:1.9rem;line-height:1.1;color:var(--accent-2);margin-bottom:6px;}
+  .impact-card h3{font-size:1rem;margin-bottom:6px;}
+  .impact-card p{font-size:.88rem;color:var(--dim);}
+  .value-box{display:grid;grid-template-columns:1fr 1.2fr;gap:28px;align-items:center;background:linear-gradient(135deg,#17284a,#121c30);border:1px solid var(--accent);border-radius:var(--radius);padding:28px;}
+  .value-box h3{font-size:1.2rem;margin-bottom:8px;}
+  .value-box p{color:var(--dim);font-size:.93rem;}
+  .roles{display:flex;flex-direction:column;gap:8px;}
+  .roles div{display:flex;justify-content:space-between;gap:12px;background:rgba(6,10,18,.45);border:1px solid var(--border);border-radius:9px;padding:10px 14px;font-size:.88rem;}
+  .roles div span:last-child{color:var(--accent-2);font-weight:650;white-space:nowrap;}
+  @media (max-width:820px){.value-box{grid-template-columns:1fr;}}
+
   /* ---------- Cards / tags ---------- */
   .tag-row{display:flex;flex-wrap:wrap;gap:6px;}
   .tag{background:rgba(79,168,255,.12);color:var(--accent);font-size:.72rem;padding:4px 9px;border-radius:20px;font-weight:650;}
@@ -140,13 +155,6 @@
   .cert-card small{display:block;color:var(--faint);font-size:.78rem;}
   .cert-card.progress{border-color:var(--accent-2);}
 
-  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
-  .service-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;}
-  .service-card h3{font-size:1rem;color:var(--accent);margin-bottom:8px;}
-  .service-card p{font-size:.9rem;color:var(--dim);}
-  .cta-box{background:linear-gradient(135deg,#17284a,#121c30);border:1px solid var(--accent);border-radius:var(--radius);padding:30px;text-align:center;}
-  .cta-box p{color:var(--dim);margin-bottom:18px;}
-  .cta-box .btn-row{justify-content:center;margin-top:0;}
 
   footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;color:var(--faint);font-size:.85rem;}
   footer a{margin:0 10px;}
@@ -178,7 +186,7 @@
     <div class="btn-row">
       <a class="btn primary" href="#fieldwork">See the Field Work</a>
       <a class="btn ghost" href="#projects">Projects</a>
-      <a class="btn ghost" href="#services">Hire Me</a>
+      <a class="btn ghost" href="#impact">Results</a>
     </div>
     <div class="stats">
       <div class="stat"><b>6+</b><span>years in networking &amp; sysadmin</span></div>
@@ -194,11 +202,11 @@
   <div class="wrap">
     <a href="#fieldwork">Field Work</a>
     <a href="#about">About</a>
+    <a href="#impact">Impact</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#certifications">Certifications</a>
-    <a href="#services">Services</a>
   </div>
 </nav>
 
@@ -319,8 +327,44 @@
   </div>
 </section>
 
+<!-- ================= IMPACT ================= -->
+<section id="impact">
+  <div class="wrap">
+    <div class="kicker">Business impact</div>
+    <h2 class="section-title">Results, not just tasks</h2>
+    <p class="section-sub">What the work meant for the business: projects delivered in-house, problems solved for good, and systems that stay up.</p>
+    <div class="impact-grid">
+      <div class="impact-card"><b>3 sites</b><h3>Built in-house, no outside integrator</h3>
+        <p>Took three warehouses from empty shell to fully operational networks: design, cabling, racks, Wi-Fi, cameras and configuration. Work a company would normally split between a low-voltage contractor and a network integrator.</p></div>
+      <div class="impact-card"><b>3 → crew</b><h3>Trained a team from zero</h3>
+        <p>Delivered the warehouse builds with three helpers who had no IT experience. I trained them on the job to pull, terminate and mount; they were an extension of my hands, and I owned the design and every configuration.</p></div>
+      <div class="impact-card"><b>0</b><h3>Operational impact on the HA cutover</h3>
+        <p>Meraki MX95 → MX105 high-availability gateway upgrade with full IP re-addressing, done as a staged, documented change with a rollback plan.</p></div>
+      <div class="impact-card"><b>0 errors</b><h3>Workstation builds automated</h3>
+        <p>Zero-touch MAAS provisioning and standard builds took setup errors to zero and cut boot time by more than half. New stations come up without a technician.</p></div>
+      <div class="impact-card"><b>Root cause</b><h3>Fixes instead of new hardware</h3>
+        <p>Resolved recurring DNS, DHCP and client issues at the network layer, avoiding hardware replacements that would not have fixed the real problem.</p></div>
+      <div class="impact-card"><b>24/7</b><h3>Problems caught before users call</h3>
+        <p>Monitoring and alerting (Zabbix, Grafana, Prometheus, Wazuh) with dashboards, automated daily reports, failover and self-healing watchdogs on critical stations.</p></div>
+    </div>
+    <div class="value-box">
+      <div>
+        <h3>One hire, the whole stack</h3>
+        <p>I can plan the network, build it physically, configure it, document it and support it, and train a crew to scale the physical work. That means fewer contractors, fewer hand-offs and someone on site who understands every layer.</p>
+      </div>
+      <div class="roles">
+        <div><span>Network design &amp; documentation (Visio)</span><span>✓ in-house</span></div>
+        <div><span>Cabling, fiber splicing, MDF/IDF &amp; rack builds</span><span>✓ in-house</span></div>
+        <div><span>Firewall, switch, Wi-Fi &amp; camera configuration</span><span>✓ in-house</span></div>
+        <div><span>Automation, monitoring &amp; ongoing support</span><span>✓ in-house</span></div>
+        <div><span>Training and supervising the install crew</span><span>✓ in-house</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SKILLS ================= -->
-<section id="skills">
+<section id="skills" class="alt">
   <div class="wrap">
     <div class="kicker">Skills</div>
     <h2 class="section-title">What I work with</h2>
@@ -349,7 +393,7 @@
 </section>
 
 <!-- ================= PROJECTS ================= -->
-<section id="projects" class="alt">
+<section id="projects">
   <div class="wrap">
     <div class="kicker">Projects</div>
     <h2 class="section-title">Production, client and lab work</h2>
@@ -420,7 +464,7 @@
 </section>
 
 <!-- ================= EXPERIENCE ================= -->
-<section id="experience">
+<section id="experience" class="alt">
   <div class="wrap">
     <div class="kicker">Experience</div>
     <h2 class="section-title">Where I've done it</h2>
@@ -481,7 +525,7 @@
 </section>
 
 <!-- ================= CERTIFICATIONS ================= -->
-<section id="certifications" class="alt">
+<section id="certifications">
   <div class="wrap">
     <div class="kicker">Credentials</div>
     <h2 class="section-title">Certifications &amp; Education</h2>
@@ -499,27 +543,6 @@
   </div>
 </section>
 
-<!-- ================= SERVICES ================= -->
-<section id="services">
-  <div class="wrap">
-    <div class="kicker">Services</div>
-    <h2 class="section-title">Work with me</h2>
-    <p class="section-sub">IT and automation for small businesses, especially insurance agencies, trucking companies and small teams that need things to just work. English or Spanish, remote or on-site in the Tampa Bay area. <em>Se habla español.</em></p>
-    <div class="services-grid">
-      <div class="service-card"><h3>Office Network &amp; Wi-Fi</h3><p>Firewalls, switches, VLANs, Wi-Fi, cameras and cabling, designed, installed, labeled and documented.</p></div>
-      <div class="service-card"><h3>Websites &amp; Online Forms</h3><p>Bilingual business websites with request forms that send everything to one place, so nothing gets lost in an inbox.</p></div>
-      <div class="service-card"><h3>Workflow &amp; AI Automation</h3><p>Intake tracking, client acknowledgements, reminders and drafted replies, with a person always approving what goes out.</p></div>
-      <div class="service-card"><h3>Monitoring &amp; Backups</h3><p>Alerts before something breaks, and backups that are tested for real, so a bad day doesn't become a lost week.</p></div>
-    </div>
-    <div class="cta-box">
-      <p>Have a network that keeps acting up, or a process that eats your team's time? Tell me about it.</p>
-      <div class="btn-row">
-        <a class="btn primary" href="mailto:garciabouza90@gmail.com?subject=IT%20%2F%20network%20project">Email Me</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/manuel-g-448984183/" target="_blank" rel="noopener">Message on LinkedIn</a>
-      </div>
-    </div>
-  </div>
-</section>
 
 <footer>
   <div class="wrap">
