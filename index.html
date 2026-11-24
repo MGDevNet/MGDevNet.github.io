@@ -4,320 +4,414 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Manuel Garcia Bouza — Network & Cloud Infrastructure Administrator</title>
-<meta name="description" content="Portfolio of Manuel Garcia Bouza — Network, Cloud & DevOps infrastructure projects: Proxmox/Ceph homelab, Cisco Ansible automation, Prometheus/Grafana/Zabbix monitoring, and IT &amp; automation services for small businesses." />
+<meta name="description" content="Manuel Garcia Bouza: network and infrastructure work from the rack to the routing table. Field-work gallery (MDF/IDF builds, fiber, Cisco/Meraki/UniFi), Proxmox/Ceph homelab, Cisco Ansible automation, monitoring, and IT services for small businesses." />
+<meta property="og:title" content="Manuel Garcia Bouza — Network & Infrastructure" />
+<meta property="og:description" content="From the rack to the routing table: field work, automation and infrastructure projects." />
+<meta property="og:image" content="https://mgdevnet.github.io/img/work/cisco-catalyst-9300-siemon.jpg" />
 <style>
   :root{
-    --navy:#1f3864;
-    --navy-light:#2c4d85;
+    --bg:#0a101c;
+    --bg-alt:#0f1727;
+    --card:#141f33;
+    --card-hi:#1a2842;
+    --text:#e8edf6;
+    --dim:#a3afc4;
+    --faint:#6f7d96;
     --accent:#4fa8ff;
-    --bg:#0b1220;
-    --bg-alt:#111a2c;
-    --card:#152238;
-    --text:#e7ecf5;
-    --text-dim:#a9b4c7;
-    --border:#233450;
-    --max:1080px;
+    --accent-2:#36d3a8;
+    --border:#22324f;
+    --max:1160px;
+    --radius:14px;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{
-    font-family:'Segoe UI',Calibri,Roboto,Arial,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.6;
-  }
+  body{font-family:'Segoe UI',Inter,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
   a{color:var(--accent);text-decoration:none;}
   a:hover{text-decoration:underline;}
+  img{max-width:100%;display:block;}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
 
-  header.hero{
-    background:radial-gradient(1200px 500px at 50% -10%, var(--navy-light), var(--bg) 60%);
-    border-bottom:1px solid var(--border);
-    padding:88px 0 56px;
-    text-align:center;
-  }
-  .avatar{
-    width:112px;height:112px;border-radius:50%;
-    border:3px solid var(--accent);
-    margin:0 auto 20px;
-    display:block;
-    object-fit:cover;
-    background:var(--card);
-  }
-  h1{font-size:2.4rem;letter-spacing:0.5px;font-weight:700;}
-  .tagline{color:var(--text-dim);font-size:1.05rem;margin-top:10px;}
-  .contact-row{
-    margin-top:22px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;
-    font-size:0.95rem;
-  }
-  .contact-row span, .contact-row a{color:var(--text-dim);}
+  /* ---------- Hero ---------- */
+  header.hero{position:relative;min-height:88vh;display:flex;align-items:center;overflow:hidden;border-bottom:1px solid var(--border);}
+  .hero-bg{position:absolute;inset:0;display:grid;grid-template-columns:repeat(4,1fr);gap:4px;opacity:.38;filter:saturate(.85);}
+  .hero-bg div{background-size:cover;background-position:center;}
+  .hero::after{content:'';position:absolute;inset:0;background:
+      linear-gradient(90deg,rgba(10,16,28,.97) 0%,rgba(10,16,28,.88) 45%,rgba(10,16,28,.55) 100%),
+      linear-gradient(0deg,var(--bg) 0%,transparent 30%);}
+  .hero .wrap{position:relative;z-index:1;padding-top:90px;padding-bottom:70px;width:100%;}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent-2);}
+  .eyebrow::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 12px var(--accent-2);}
+  h1{font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.08;font-weight:800;margin:16px 0 14px;letter-spacing:-.5px;}
+  h1 span{color:var(--accent);}
+  .tagline{color:var(--dim);font-size:clamp(1rem,1.6vw,1.2rem);max-width:620px;}
+  .contact-row{margin-top:22px;display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.93rem;color:var(--dim);}
+  .contact-row a{color:var(--dim);}
   .contact-row a:hover{color:var(--accent);}
-  .btn-row{margin-top:26px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
-  .btn{
-    padding:10px 22px;border-radius:8px;font-weight:600;font-size:0.95rem;
-    border:1px solid var(--accent);transition:all .15s ease;
-  }
+  .btn-row{margin-top:30px;display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{padding:11px 22px;border-radius:9px;font-weight:650;font-size:.95rem;border:1px solid var(--accent);transition:all .15s ease;display:inline-block;}
   .btn.primary{background:var(--accent);color:#06111f;}
   .btn.primary:hover{background:#7cbaff;text-decoration:none;}
   .btn.ghost{color:var(--accent);}
-  .btn.ghost:hover{background:rgba(79,168,255,0.1);text-decoration:none;}
+  .btn.ghost:hover{background:rgba(79,168,255,.1);text-decoration:none;}
+  .stats{margin-top:46px;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;max-width:760px;}
+  .stat{background:rgba(20,31,51,.75);border:1px solid var(--border);border-radius:12px;padding:14px 16px;backdrop-filter:blur(4px);}
+  .stat b{display:block;font-size:1.6rem;line-height:1.1;color:var(--text);}
+  .stat span{font-size:.78rem;color:var(--dim);}
 
-  nav.subnav{
-    position:sticky;top:0;z-index:10;
-    background:rgba(11,18,32,0.9);backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--border);
-  }
-  nav.subnav .wrap{display:flex;gap:26px;padding:14px 24px;justify-content:center;flex-wrap:wrap;}
-  nav.subnav a{color:var(--text-dim);font-size:0.9rem;font-weight:600;letter-spacing:0.3px;text-transform:uppercase;}
+  /* ---------- Nav ---------- */
+  nav.subnav{position:sticky;top:0;z-index:20;background:rgba(10,16,28,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);}
+  nav.subnav .wrap{display:flex;gap:6px 24px;padding:13px 24px;justify-content:center;flex-wrap:wrap;}
+  nav.subnav a{color:var(--dim);font-size:.82rem;font-weight:650;letter-spacing:.5px;text-transform:uppercase;}
   nav.subnav a:hover{color:var(--accent);text-decoration:none;}
 
-  section{padding:64px 0;}
+  section{padding:76px 0;}
   section.alt{background:var(--bg-alt);}
-  h2.section-title{
-    font-size:1.5rem;margin-bottom:8px;color:var(--text);
-  }
-  p.section-sub{color:var(--text-dim);margin-bottom:36px;max-width:640px;}
+  .kicker{font-size:.75rem;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--accent-2);margin-bottom:6px;}
+  h2.section-title{font-size:clamp(1.5rem,2.6vw,2rem);margin-bottom:10px;}
+  p.section-sub{color:var(--dim);margin-bottom:34px;max-width:700px;}
 
-  .skills-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;
-  }
-  .skill-card{
-    background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 20px;
-  }
-  .skill-card h3{font-size:0.95rem;color:var(--accent);margin-bottom:8px;}
-  .skill-card p{font-size:0.88rem;color:var(--text-dim);}
+  /* ---------- Gallery ---------- */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px;}
+  .filters button{font:inherit;font-size:.85rem;font-weight:600;color:var(--dim);background:var(--card);border:1px solid var(--border);padding:7px 15px;border-radius:999px;cursor:pointer;transition:all .15s;}
+  .filters button:hover{color:var(--text);border-color:var(--accent);}
+  .filters button.on{background:var(--accent);color:#06111f;border-color:var(--accent);}
+  .gallery{columns:3 300px;column-gap:16px;}
+  .shot{break-inside:avoid;margin:0 0 16px;position:relative;border-radius:var(--radius);overflow:hidden;background:var(--card);border:1px solid var(--border);cursor:zoom-in;}
+  .shot img{width:100%;height:auto;transition:transform .35s ease;}
+  .shot:hover img{transform:scale(1.035);}
+  .shot figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 14px 12px;background:linear-gradient(0deg,rgba(6,10,18,.95),rgba(6,10,18,0));}
+  .shot figcaption strong{display:block;font-size:.95rem;}
+  .shot figcaption small{color:var(--dim);font-size:.78rem;}
+  .shot.hide{display:none;}
 
-  .projects-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px;
-  }
-  .project-card{
-    background:var(--card);border:1px solid var(--border);border-radius:12px;
-    padding:24px;display:flex;flex-direction:column;
-    transition:transform .15s ease, border-color .15s ease;
-  }
+  .lightbox{position:fixed;inset:0;z-index:50;background:rgba(4,7,13,.94);display:none;align-items:center;justify-content:center;padding:24px;}
+  .lightbox.open{display:flex;}
+  .lb-inner{max-width:1100px;width:100%;display:grid;grid-template-columns:minmax(0,1.6fr) minmax(240px,1fr);gap:26px;align-items:center;}
+  .lb-inner img{max-height:84vh;width:auto;margin:0 auto;border-radius:10px;}
+  .lb-text h3{font-size:1.25rem;margin-bottom:8px;}
+  .lb-text p{color:var(--dim);font-size:.95rem;margin-bottom:14px;}
+  .lb-btn{position:absolute;background:var(--card);border:1px solid var(--border);color:var(--text);width:44px;height:44px;border-radius:50%;font-size:1.3rem;cursor:pointer;}
+  .lb-btn:hover{border-color:var(--accent);}
+  .lb-close{top:18px;right:18px;}
+  .lb-prev{left:18px;top:50%;transform:translateY(-50%);}
+  .lb-next{right:18px;top:50%;transform:translateY(-50%);}
+  @media (max-width:820px){.lb-inner{grid-template-columns:1fr;}.lb-inner img{max-height:62vh;}.lb-prev,.lb-next{top:auto;bottom:18px;transform:none;}}
+
+  /* ---------- Cards / tags ---------- */
+  .tag-row{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{background:rgba(79,168,255,.12);color:var(--accent);font-size:.72rem;padding:4px 9px;border-radius:20px;font-weight:650;}
+  .tag.green{background:rgba(54,211,168,.12);color:var(--accent-2);}
+
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;}
+  .about-grid p{color:var(--dim);margin-bottom:14px;}
+  .about-photo{border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;}
+  .about-photo img{width:100%;height:100%;object-fit:cover;}
+  @media (max-width:820px){.about-grid{grid-template-columns:1fr;}}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;}
+  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;}
+  .skill-card .ico{font-size:1.4rem;margin-bottom:6px;}
+  .skill-card h3{font-size:.98rem;color:var(--text);margin-bottom:6px;}
+  .skill-card p{font-size:.87rem;color:var(--dim);}
+
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;}
+  .project-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;display:flex;flex-direction:column;transition:transform .15s ease,border-color .15s ease;}
   .project-card:hover{transform:translateY(-3px);border-color:var(--accent);}
-  .project-card h3{font-size:1.1rem;margin-bottom:10px;color:var(--text);}
-  .project-card p.desc{color:var(--text-dim);font-size:0.92rem;margin-bottom:14px;flex-grow:1;}
-  .tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;}
-  .tag{
-    background:rgba(79,168,255,0.12);color:var(--accent);
-    font-size:0.72rem;padding:4px 9px;border-radius:20px;font-weight:600;
-  }
-  .project-card .links{display:flex;gap:14px;font-size:0.88rem;font-weight:600;}
+  .project-card .banner{height:150px;display:flex;align-items:flex-end;padding:16px 20px;position:relative;background:linear-gradient(135deg,#1c3260,#0f1b31);}
+  .project-card .banner.img{background-size:cover;background-position:center;}
+  .project-card .banner.img::after{content:'';position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,31,51,1),rgba(20,31,51,.15));}
+  .project-card .banner code{position:relative;z-index:1;font-family:Consolas,'Cascadia Code',monospace;font-size:.78rem;color:var(--accent-2);background:rgba(6,10,18,.7);padding:4px 9px;border-radius:6px;}
+  .badge{position:absolute;top:14px;right:14px;z-index:1;font-size:.66rem;font-weight:800;letter-spacing:.8px;padding:4px 9px;border-radius:6px;background:var(--accent-2);color:#04140f;}
+  .project-card .body{padding:20px;display:flex;flex-direction:column;flex-grow:1;}
+  .project-card h3{font-size:1.08rem;margin-bottom:8px;}
+  .project-card p.desc{color:var(--dim);font-size:.9rem;margin-bottom:14px;flex-grow:1;}
+  .project-card .links{margin-top:14px;font-size:.88rem;font-weight:650;}
 
   .timeline{border-left:2px solid var(--border);padding-left:26px;}
-  .timeline-item{margin-bottom:34px;position:relative;}
-  .timeline-item::before{
-    content:'';position:absolute;left:-32px;top:5px;width:12px;height:12px;
-    border-radius:50%;background:var(--accent);
-  }
-  .timeline-item h3{font-size:1.05rem;color:var(--text);}
-  .timeline-item .meta{color:var(--text-dim);font-size:0.85rem;margin:4px 0 10px;}
-  .timeline-item ul{padding-left:18px;color:var(--text-dim);font-size:0.9rem;}
+  .timeline-item{margin-bottom:36px;position:relative;}
+  .timeline-item::before{content:'';position:absolute;left:-33px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg-alt);}
+  .timeline-item h3{font-size:1.05rem;}
+  .timeline-item .meta{color:var(--faint);font-size:.85rem;margin:3px 0 10px;}
+  .timeline-item ul{padding-left:18px;color:var(--dim);font-size:.9rem;}
   .timeline-item li{margin-bottom:5px;}
 
-  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
-  .cert-card{
-    background:var(--card);border:1px solid var(--border);border-radius:10px;
-    padding:14px 18px;font-size:0.9rem;color:var(--text-dim);
-  }
+  .certs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px;}
+  .cert-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;font-size:.9rem;}
+  .cert-card small{display:block;color:var(--faint);font-size:.78rem;}
+  .cert-card.progress{border-color:var(--accent-2);}
 
-  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-bottom:32px;}
+  .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-bottom:28px;}
   .service-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;}
   .service-card h3{font-size:1rem;color:var(--accent);margin-bottom:8px;}
-  .service-card p{font-size:0.9rem;color:var(--text-dim);}
-  .cta-box{
-    background:var(--card);border:1px solid var(--accent);border-radius:12px;padding:26px;
-    text-align:center;
-  }
-  .cta-box p{color:var(--text-dim);margin-bottom:18px;}
+  .service-card p{font-size:.9rem;color:var(--dim);}
+  .cta-box{background:linear-gradient(135deg,#17284a,#121c30);border:1px solid var(--accent);border-radius:var(--radius);padding:30px;text-align:center;}
+  .cta-box p{color:var(--dim);margin-bottom:18px;}
+  .cta-box .btn-row{justify-content:center;margin-top:0;}
 
-  footer{
-    border-top:1px solid var(--border);padding:40px 0;text-align:center;
-    color:var(--text-dim);font-size:0.85rem;
-  }
+  footer{border-top:1px solid var(--border);padding:40px 0;text-align:center;color:var(--faint);font-size:.85rem;}
   footer a{margin:0 10px;}
 
-  @media (max-width:600px){
-    h1{font-size:1.9rem;}
-    section{padding:44px 0;}
-  }
+  @media (max-width:600px){section{padding:52px 0;}.wrap{padding:0 16px;}.hero-bg{grid-template-columns:repeat(2,1fr);}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
 </style>
 </head>
 <body>
 
 <header class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <div style="background-image:url('img/work/cisco-catalyst-9300-siemon.jpg')"></div>
+    <div style="background-image:url('img/work/dual-rack-cat6-termination.jpg')"></div>
+    <div style="background-image:url('img/work/idf-unifi-fiber-uplink.jpg')"></div>
+    <div style="background-image:url('img/work/enterprise-core-rack.jpg')"></div>
+  </div>
   <div class="wrap">
-    <img class="avatar" src="https://avatars.githubusercontent.com/u/79100574?v=4" alt="Manuel Garcia Bouza" />
-    <h1>Manuel Garcia Bouza</h1>
-    <p class="tagline">Network &amp; Cloud Infrastructure Administrator · Systems Administration &amp; Automation · Cybersecurity</p>
+    <div class="eyebrow">Available for network &amp; infrastructure roles</div>
+    <h1>Manuel Garcia Bouza<br /><span>From the rack to the routing table.</span></h1>
+    <p class="tagline">Network &amp; Cloud Infrastructure Administrator. I design networks, document them, pull and terminate the cable, configure the gear, then automate and monitor what I built.</p>
     <div class="contact-row">
-      <span>Pinellas Park, FL</span>
+      <span>Tampa Bay, FL</span>
       <a href="mailto:garciabouza90@gmail.com">garciabouza90@gmail.com</a>
       <a href="https://www.linkedin.com/in/manuel-g-448984183/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/MGDevNet" target="_blank" rel="noopener">GitHub</a>
+      <span>English / Español</span>
     </div>
     <div class="btn-row">
-      <a class="btn primary" href="#projects">View Projects</a>
+      <a class="btn primary" href="#fieldwork">See the Field Work</a>
+      <a class="btn ghost" href="#projects">Projects</a>
       <a class="btn ghost" href="#services">Hire Me</a>
-      <a class="btn ghost" href="https://github.com/MGDevNet" target="_blank" rel="noopener">GitHub Profile</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>6+</b><span>years in networking &amp; sysadmin</span></div>
+      <div class="stat"><b>3</b><span>warehouse sites built from empty shell</span></div>
+      <div class="stat"><b>60+</b><span>wireless APs deployed</span></div>
+      <div class="stat"><b>60+</b><span>IP cameras commissioned</span></div>
+      <div class="stat"><b>150+</b><span>users supported</span></div>
     </div>
   </div>
 </header>
 
 <nav class="subnav">
   <div class="wrap">
+    <a href="#fieldwork">Field Work</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
-    <a href="#services">Services</a>
     <a href="#experience">Experience</a>
     <a href="#certifications">Certifications</a>
+    <a href="#services">Services</a>
   </div>
 </nav>
 
-<section id="about">
+<!-- ================= FIELD WORK GALLERY ================= -->
+<section id="fieldwork">
   <div class="wrap">
-    <h2 class="section-title">About</h2>
-    <p class="section-sub" style="max-width:760px;">
-      IT professional with 6+ years of experience designing, deploying, and maintaining enterprise network,
-      systems, and cloud infrastructure — Cisco routing/switching, AWS, Linux systems, and wireless/physical
-      deployments across multi-site operations. Outside of work, I build production-style infrastructure
-      projects to stay current with modern DevOps tooling: infrastructure as code, virtualization clusters,
-      and full observability stacks. Holds active certifications in networking and cybersecurity. Bilingual
-      (English/Spanish).
-    </p>
-  </div>
-</section>
+    <div class="kicker">Field work</div>
+    <h2 class="section-title">Built by hand, documented, then managed</h2>
+    <p class="section-sub">A selection of closets, racks, fiber and integration work from real jobs. Click any photo for the details.</p>
 
-<section id="skills" class="alt">
-  <div class="wrap">
-    <h2 class="section-title">Skills</h2>
-    <p class="section-sub">Core competencies across networking, cloud, automation, and security.</p>
-    <div class="skills-grid">
-      <div class="skill-card">
-        <h3>Networking</h3>
-        <p>Cisco IOS, Meraki MX HA gateways, UniFi, VLANs, inter-VLAN routing, 802.1Q trunking, EtherChannel, Router-on-a-Stick, STP, TCP/IP, VPN, DNS, DHCP</p>
-      </div>
-      <div class="skill-card">
-        <h3>Cloud &amp; Virtualization</h3>
-        <p>AWS (EC2, VPC, IAM, S3), Proxmox VE clustering &amp; HA failover, Ceph distributed storage, KVM/LXC, Linode</p>
-      </div>
-      <div class="skill-card">
-        <h3>Automation &amp; IaC</h3>
-        <p>Ansible (playbooks, roles, Vault), MAAS bare-metal provisioning, cloud-init, Bash scripting, infrastructure as code, GitLab CI</p>
-      </div>
-      <div class="skill-card">
-        <h3>Systems &amp; Storage</h3>
-        <p>Linux (Ubuntu/CentOS), Windows Server, Active Directory (150 users), ZFS/TrueNAS, NFS, Docker &amp; Docker Compose</p>
-      </div>
-      <div class="skill-card">
-        <h3>Monitoring &amp; Observability</h3>
-        <p>Prometheus, Alertmanager, Grafana, Zabbix, Node Exporter, custom dashboards</p>
-      </div>
-      <div class="skill-card">
-        <h3>Physical &amp; Wireless</h3>
-        <p>Wireless AP deployment (60+ units), PoE IP camera/NVR systems, structured cabling (Cat5E/Cat6/Coax), rack builds, low-voltage systems</p>
-      </div>
-      <div class="skill-card">
-        <h3>Security</h3>
-        <p>Server hardening, SSH key management, UFW/iptables, access control, encrypted credential management, backup &amp; DR</p>
-      </div>
+    <div class="filters" role="tablist" aria-label="Filter photos">
+      <button class="on" data-f="all">All</button>
+      <button data-f="racks">MDF / IDF &amp; Racks</button>
+      <button data-f="cabling">Structured Cabling</button>
+      <button data-f="fiber">Fiber</button>
+      <button data-f="network">Network Gear</button>
+      <button data-f="av">AV &amp; Control Systems</button>
+    </div>
+
+    <div class="gallery" id="gallery">
+      <figure class="shot" data-cat="network racks" data-tags="Cisco Catalyst 9300,UPOE,Siemon UltraMAX,Patch panels">
+        <img src="img/work/cisco-catalyst-9300-siemon.jpg" alt="Cisco Catalyst 9300 switch mounted between Siemon patch panels" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Data center: Catalyst 9300 access layer</strong><small>Data center I built as a low-voltage tech: 48-port UPOE switch interleaved with Siemon patch panels for short, one-to-one patching.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="racks fiber network" data-tags="UniFi USW Pro Max,Multimode fiber,LC duplex,Port labeling,Cable management">
+        <img src="img/work/idf-unifi-fiber-uplink.jpg" alt="IDF cabinet with UniFi switch, fiber uplink to MDF and labeled camera ports" loading="lazy" width="1280" height="960" />
+        <figcaption><strong>IDF with fiber uplink to the MDF</strong><small>UniFi USW Pro Max, multimode LC uplink, labeled camera drops, color-coded patching.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="cabling racks" data-tags="Cat6,Dual rack,Ladder rack,Velcro dressing,Termination">
+        <img src="img/work/dual-rack-cat6-termination.jpg" alt="Two racks with hundreds of Cat6 cables dressed and terminated" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Data center: dual-rack Cat6 termination</strong><small>Hundreds of horizontal runs, bundled, dressed and terminated across two racks.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="network racks" data-tags="Cisco Catalyst,Firewalls,Routers,Redundant power,Rack layout">
+        <img src="img/work/enterprise-core-rack.jpg" alt="Enterprise rack with a stack of Cisco Catalyst switches, routers and firewalls" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Data center: core rack</strong><small>Stacked Catalyst switches with dual power supplies, plus edge routers and firewalls, labeled by role.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="cabling" data-tags="Cat6,Patch panels,Bend radius,Velcro dressing">
+        <img src="img/work/cat6-patch-dressing.jpg" alt="Close-up of dressed Cat6 cables entering patch panels" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Cable dressing detail</strong><small>Consistent bend radius and Velcro (not zip ties) on every bundle, so moves and adds stay easy.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="fiber" data-tags="Fusion splicing,Splice cassette,SC adapters,Fiber management">
+        <img src="img/work/fiber-splice-cassette.jpg" alt="Fiber splice cassette with color-coded strands routed to SC adapters" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Fusion-spliced fiber cassette</strong><small>Strands I fusion-spliced, color-coded, routed and retained, ready to land on the adapter panel.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="fiber racks" data-tags="Multimode OM3/OM4,LC duplex,Adapter panel">
+        <img src="img/work/fiber-lc-adapter-panel.jpg" alt="Multimode LC duplex fiber adapter panel with patch cords" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>LC fiber adapter panel</strong><small>Multimode duplex LC landing for backbone links between closets.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="network racks" data-tags="UniFi Dream Machine SE,UniFi PoE switch,Comcast Business,ISP handoff">
+        <img src="img/work/unifi-dream-machine-wallmount.jpg" alt="Wall-mounted UniFi Dream Machine SE, PoE switch and Comcast Business modem" loading="lazy" width="1280" height="960" />
+        <figcaption><strong>Small-office edge</strong><small>UniFi Dream Machine SE with PoE switch and a business ISP handoff, in a compact wall mount.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="racks cabling" data-tags="MDF build,4-post rack,Cat6 riser,Ceiling runs">
+        <img src="img/work/mdf-build-in-progress.jpg" alt="MDF room mid-build with rack, network gear and Cat6 riser bundles from the ceiling" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>MDF, mid-build</strong><small>Rack standing, gear going in, Cat6 riser bundles dropping from the ceiling. The empty-room-to-network stage.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="network racks" data-tags="Aruba switches,UniFi Cloud Key,WattBox / OvrC,UPS,Labeling">
+        <img src="img/work/aruba-rack-front.jpg" alt="Labeled network rack with Aruba switches, controller, remote power and UPS" loading="lazy" width="720" height="1280" />
+        <figcaption><strong>Fully labeled network rack</strong><small>Router, Aruba main and secondary switches, controller, remote-managed power and dedicated UPS units.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="network racks" data-tags="Aruba,Patch cables,Remote power,Labeling">
+        <img src="img/work/aruba-rack-labeled.jpg" alt="Angle view of rack showing labeled switches and patching" loading="lazy" width="720" height="1280" />
+        <figcaption><strong>Every device labeled</strong><small>Clear labels on every device and power circuit, so the next tech (or me at 2 a.m.) knows what's what.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="racks cabling" data-tags="Wall-mount rack,48-port panel,Port labeling,Fiber service loop">
+        <img src="img/work/wallmount-rack-labeled-panel.jpg" alt="Wall-mount rack with 48-port panel labeled for cameras and access points" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Labeled 48-port panel</strong><small>Camera (CAM) and access point (WAP) drops identified at the panel, with a fiber service loop.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="racks cabling" data-tags="Wall-mount rack,Backboard,Grounding,Cable entry">
+        <img src="img/work/wallmount-rack-cable-entry.jpg" alt="Wall-mount rack on backboard with cable bundle entering from ceiling and ground wire" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Clean cable entry and bonding</strong><small>Bundle routed from the ceiling sleeve, rack on a backboard with a ground conductor.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="av" data-tags="AV rack,Amplifiers,Network switch,Surge protection">
+        <img src="img/work/av-equipment-rack.jpg" alt="AV equipment rack with amplifiers, network switch and power conditioning" loading="lazy" width="720" height="1280" />
+        <figcaption><strong>AV head-end rack</strong><small>Amplifiers, streaming and control gear on a dedicated network switch with power conditioning.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="av network" data-tags="Crestron RF gateway,UniFi switch,Streaming,PoE">
+        <img src="img/work/display-backplane-crestron.jpg" alt="Back of a display with Crestron gateway, UniFi switch and media devices neatly mounted" loading="lazy" width="1280" height="960" />
+        <figcaption><strong>Display backplane integration</strong><small>Crestron RF gateway, a UniFi switch and media players mounted and wired behind a motorized display.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="av" data-tags="Lutron HomeWorks QSX,Control wiring,Low voltage">
+        <img src="img/work/lutron-homeworks-processor.jpg" alt="Lutron HomeWorks QSX processor panel with control wiring" loading="lazy" width="960" height="1280" />
+        <figcaption><strong>Lighting-control processor</strong><small>Lutron HomeWorks QSX processor and power supply, with control links landed on wiring blocks.</small></figcaption>
+      </figure>
+      <figure class="shot" data-cat="av" data-tags="Lutron,Lighting control,DIN rail,Low voltage">
+        <img src="img/work/lutron-lighting-panel.jpg" alt="Tall lighting-control panel with DIN-rail modules and wiring" loading="lazy" width="720" height="1280" />
+        <figcaption><strong>Lighting-control panel</strong><small>DIN-rail lighting modules with organized line and control wiring.</small></figcaption>
+      </figure>
     </div>
   </div>
 </section>
 
-<section id="projects">
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close">✕</button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous">‹</button>
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next">›</button>
+  <div class="lb-inner">
+    <img id="lbImg" src="" alt="" />
+    <div class="lb-text">
+      <h3 id="lbTitle"></h3>
+      <p id="lbDesc"></p>
+      <div class="tag-row" id="lbTags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="alt">
+  <div class="wrap about-grid">
+    <div>
+      <div class="kicker">About</div>
+      <h2 class="section-title">Physical layer to automation</h2>
+      <p>IT professional with 6+ years designing, deploying and supporting LAN/WAN, wireless, server and cloud infrastructure. At Weee! I took three warehouse sites from empty shell to fully operational networks, and led a high-availability gateway upgrade with a staged cutover and zero operational impact.</p>
+      <p>I'm just as comfortable terminating fiber in an IDF as I am writing Ansible playbooks, building Grafana dashboards or tracing a problem with Wireshark. I document everything in Visio and run changes through peer review and a change advisory board.</p>
+      <p>Bilingual (English/Spanish). Currently finishing the Cisco CCNA 200-301.</p>
+    </div>
+    <div class="about-photo"><img src="img/work/mdf-build-in-progress.jpg" alt="MDF room during build-out" loading="lazy" /></div>
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
   <div class="wrap">
-    <h2 class="section-title">Projects</h2>
-    <p class="section-sub">Production, client and self-built projects demonstrating hands-on, current DevOps, networking and automation skills.</p>
+    <div class="kicker">Skills</div>
+    <h2 class="section-title">What I work with</h2>
+    <p class="section-sub">Core competencies across the stack, from cable to cloud.</p>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="ico">🔀</div><h3>Routing &amp; Switching</h3>
+        <p>Cisco IOS and Catalyst, Meraki MX/MS/MR (HA gateways), Ubiquiti UniFi, Aruba; VLANs, 802.1Q, inter-VLAN routing, EtherChannel, STP, static routing; OSPF/EIGRP/BGP in lab and CCNA study.</p></div>
+      <div class="skill-card"><div class="ico">🌐</div><h3>Network Services &amp; WAN</h3>
+        <p>DNS, DHCP, Syslog, site-to-site and remote-access VPN, multi-site WAN, static WAN with routed public IP blocks, ISP and carrier demarc troubleshooting.</p></div>
+      <div class="skill-card"><div class="ico">🧵</div><h3>Physical Layer</h3>
+        <p>MDF/IDF and rack builds, Cat5e/Cat6/coax, multimode fiber fusion splicing and termination (LC/SC, adapter panels, splice cassettes), labeling standards, cable management, bonding, PoE cameras and APs.</p></div>
+      <div class="skill-card"><div class="ico">🔎</div><h3>Troubleshooting</h3>
+        <p>Wireshark packet captures and display filters, Nmap, structured incident triage, root-cause fixes at the network layer instead of swapping hardware.</p></div>
+      <div class="skill-card"><div class="ico">☁️</div><h3>Cloud &amp; Virtualization</h3>
+        <p>AWS (EC2, VPC, IAM, S3), Proxmox VE clustering and HA, Ceph, KVM/LXC, TrueNAS/ZFS, Docker, Linode.</p></div>
+      <div class="skill-card"><div class="ico">⚙️</div><h3>Automation &amp; ITSM</h3>
+        <p>Ansible (+ Vault), netmiko, MAAS, cloud-init, Foreman, Bash, GitLab CI; Jira change/incident, CAB, maintenance windows, rollback plans.</p></div>
+      <div class="skill-card"><div class="ico">📈</div><h3>Monitoring &amp; Security</h3>
+        <p>Prometheus, Alertmanager, Grafana, Zabbix, Wazuh SIEM, ELK; hardening, UFW/iptables, firmware and CVE patching, backup and DR drills.</p></div>
+      <div class="skill-card"><div class="ico">📐</div><h3>Documentation</h3>
+        <p>Microsoft Visio network diagrams, rack elevations, floor plans, SOPs, change records and weekly reports to leadership.</p></div>
+      <div class="skill-card"><div class="ico">🎛️</div><h3>AV &amp; Control Integration</h3>
+        <p>AV racks, Crestron and Lutron HomeWorks control systems on the network, remote power management (WattBox/OvrC), surge protection and UPS.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROJECTS ================= -->
+<section id="projects" class="alt">
+  <div class="wrap">
+    <div class="kicker">Projects</div>
+    <h2 class="section-title">Production, client and lab work</h2>
+    <p class="section-sub">Hands-on projects in networking, automation and infrastructure, with the code on GitHub.</p>
     <div class="projects-grid">
 
       <div class="project-card">
-        <h3>MAAS Zero-Touch Kiosk Deployment <span style="color:var(--accent);font-size:0.7rem;font-weight:700;">· LIVE IN PRODUCTION</span></h3>
-        <p class="desc">Currently deployed at company packing stations. MAAS (Metal-as-a-Service) handles zero-touch
-        bare-metal OS provisioning; cloud-init fully builds a locked-down Ubuntu Chrome-kiosk workstation with
-        Zebra label printing (QZ Tray) — no manual steps after clicking Deploy. Includes self-healing watchdog
-        scripts, VLAN-aware network handoff, and remote management via MeshCentral.</p>
-        <div class="tag-row">
-          <span class="tag">MAAS</span><span class="tag">cloud-init</span><span class="tag">Linux kiosk</span>
-          <span class="tag">Bash / systemd</span><span class="tag">GitLab CI</span><span class="tag">VLANs</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/MGDevNet/MAAS_Deploy_Packing" target="_blank" rel="noopener">GitHub Repo →</a>
+        <div class="banner"><span class="badge">LIVE IN PRODUCTION</span><code>$ maas deploy --zero-touch</code></div>
+        <div class="body">
+          <h3>MAAS Zero-Touch Kiosk Deployment</h3>
+          <p class="desc">Packing-station workstations go from bare metal to a locked-down Ubuntu Chrome kiosk with no manual steps: MAAS provisioning, cloud-init build, Zebra label printing (QZ Tray), self-healing watchdogs, VLAN-aware handoff and MeshCentral remote management.</p>
+          <div class="tag-row"><span class="tag">MAAS</span><span class="tag">cloud-init</span><span class="tag">Linux kiosk</span><span class="tag">Bash / systemd</span><span class="tag">VLANs</span></div>
+          <div class="links"><a href="https://github.com/MGDevNet/MAAS_Deploy_Packing" target="_blank" rel="noopener">GitHub Repo →</a></div>
         </div>
       </div>
 
       <div class="project-card">
-        <h3>Homelab — 3-Node Proxmox Cluster with Ceph HA</h3>
-        <p class="desc">Production-style homelab on 3 clustered Proxmox nodes with Ceph HA storage, a dedicated
-        TrueNAS SCALE server, and a Cisco routed/switched backbone with VLAN segmentation. 10+ self-hosted
-        services deployed across VMs and LXC containers, including reverse proxy with TLS, DNS/ad-blocking,
-        a password manager, and a full media automation stack.</p>
-        <div class="tag-row">
-          <span class="tag">Proxmox</span><span class="tag">Ceph</span><span class="tag">VLANs</span>
-          <span class="tag">TrueNAS / ZFS</span><span class="tag">Docker</span><span class="tag">Nginx / TLS</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/MGDevNet/homelab-project" target="_blank" rel="noopener">GitHub Repo →</a>
+        <div class="banner"><code>pvecm status · ceph -s</code></div>
+        <div class="body">
+          <h3>Homelab: 3-Node Proxmox Cluster with Ceph HA</h3>
+          <p class="desc">Three clustered Proxmox nodes with Ceph HA storage, a TrueNAS SCALE server and a Cisco routed/switched backbone with VLAN segmentation. 10+ self-hosted services across VMs and LXC, including reverse proxy with TLS, DNS filtering and a password manager, with Proxmox Backup Server.</p>
+          <div class="tag-row"><span class="tag">Proxmox</span><span class="tag">Ceph</span><span class="tag">VLANs</span><span class="tag">TrueNAS / ZFS</span><span class="tag">Docker</span></div>
+          <div class="links"><a href="https://github.com/MGDevNet/homelab-project" target="_blank" rel="noopener">GitHub Repo →</a></div>
         </div>
       </div>
 
       <div class="project-card">
-        <h3>Cisco Network Automation with Ansible</h3>
-        <p class="desc">Ansible-based automation managing a multi-device Cisco environment (ISR router +
-        Catalyst switches) end-to-end: config backups, fact gathering, VLAN/interface provisioning, security
-        hardening, and rolling configuration updates — all version-controlled with Ansible Vault-encrypted
-        credentials.</p>
-        <div class="tag-row">
-          <span class="tag">Ansible</span><span class="tag">Cisco IOS</span><span class="tag">IaC</span>
-          <span class="tag">Ansible Vault</span><span class="tag">VLANs</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/MGDevNet/cisco-ansible" target="_blank" rel="noopener">GitHub Repo →</a>
+        <div class="banner"><code>ansible-playbook backup.yml</code></div>
+        <div class="body">
+          <h3>Cisco Network Automation with Ansible</h3>
+          <p class="desc">Automation for a Cisco ISR router and Catalyst switches: config backups, fact gathering, VLAN and interface provisioning, security hardening and rolling updates, version-controlled with Ansible Vault credentials.</p>
+          <div class="tag-row"><span class="tag">Ansible</span><span class="tag">netmiko</span><span class="tag">Cisco IOS</span><span class="tag">Ansible Vault</span></div>
+          <div class="links"><a href="https://github.com/MGDevNet/cisco-ansible" target="_blank" rel="noopener">GitHub Repo →</a></div>
         </div>
       </div>
 
       <div class="project-card">
-        <h3>Conexus Insurance — Bilingual Agency Website <span style="color:var(--accent);font-size:0.7rem;font-weight:700;">· CLIENT PROJECT</span></h3>
-        <p class="desc">Designed, built and host a bilingual (English/Spanish) website for a commercial trucking
-        insurance agency. Clients can request quotes, policy changes and COI certificates, report and track
-        claims, and make payments online, all through one unified form backend. Served through Cloudflare, with
-        an automation roadmap for intake tracking, auto-acknowledgements and renewal reminders.</p>
-        <div class="tag-row">
-          <span class="tag">React</span><span class="tag">Vite</span><span class="tag">i18n EN/ES</span>
-          <span class="tag">Cloudflare</span><span class="tag">Forms API</span><span class="tag">Automation</span>
-        </div>
-        <div class="links">
-          <a href="https://conexusagency.com" target="_blank" rel="noopener">Live Site →</a>
+        <div class="banner"><code>prometheus · grafana · zabbix</code></div>
+        <div class="body">
+          <h3>Monitoring Stack</h3>
+          <p class="desc">Prometheus, Alertmanager, Grafana, Zabbix and Node Exporter deployed across 3 VMs from bare Ubuntu with one Ansible inventory. Redeploy to a new subnet by editing a single file; Grafana ships pre-wired to both datasources.</p>
+          <div class="tag-row"><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Zabbix</span><span class="tag">Ansible</span></div>
+          <div class="links"><a href="https://github.com/MGDevNet/monitoring-stack" target="_blank" rel="noopener">GitHub Repo →</a></div>
         </div>
       </div>
 
       <div class="project-card">
-        <h3>AI Agent Operations Team</h3>
-        <p class="desc">An AI orchestrator that sends work to seven specialist agents (network automation,
-        homelab, workplace IT, security review, career, client automation, personal admin). Each agent has its
-        own scope, safety rules, persistent knowledge base and status log. Risky actions like live network
-        changes, emails or payments always need human approval, and a security agent reviews every repo before
-        it goes public.</p>
-        <div class="tag-row">
-          <span class="tag">AI agents</span><span class="tag">Claude Code</span><span class="tag">Orchestration</span>
-          <span class="tag">Automation</span><span class="tag">Guardrails</span>
+        <div class="banner"><span class="badge">CLIENT PROJECT</span><code>EN / ES</code></div>
+        <div class="body">
+          <h3>Conexus Insurance: Bilingual Agency Website</h3>
+          <p class="desc">Bilingual (English/Spanish) website for a commercial trucking insurance agency, with online certificate (COI) and policy-change request forms. Self-hosted on a Linux VM behind nginx and Cloudflare, with an automation roadmap for intake and reminders.</p>
+          <div class="tag-row"><span class="tag">React</span><span class="tag">Vite</span><span class="tag">Node / Express</span><span class="tag">nginx</span><span class="tag">Cloudflare</span></div>
+          <div class="links"><a href="https://conexusagency.com" target="_blank" rel="noopener">Live Site →</a></div>
         </div>
       </div>
 
       <div class="project-card">
-        <h3>Monitoring Stack — Prometheus, Grafana &amp; Zabbix</h3>
-        <p class="desc">Full observability stack (Prometheus, Alertmanager, Grafana, Zabbix + MySQL, Node
-        Exporter) deployed across 3 dedicated VMs from bare Ubuntu using a single-source-of-truth Ansible
-        inventory — redeployable to a new subnet by editing one file. Grafana ships pre-wired with Prometheus
-        and Zabbix datasources.</p>
-        <div class="tag-row">
-          <span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">Zabbix</span>
-          <span class="tag">Ansible</span><span class="tag">UFW</span><span class="tag">systemd hardening</span>
-        </div>
-        <div class="links">
-          <a href="https://github.com/MGDevNet/monitoring-stack" target="_blank" rel="noopener">GitHub Repo →</a>
+        <div class="banner"><code>orchestrator → 7 agents</code></div>
+        <div class="body">
+          <h3>AI Agent Operations Team</h3>
+          <p class="desc">An AI orchestrator that routes work to seven specialist agents (network automation, homelab, workplace IT, security review, career, client automation, personal admin), each with scoped rules, a knowledge base and status log. Risky actions always need human approval.</p>
+          <div class="tag-row"><span class="tag">AI agents</span><span class="tag">Claude Code</span><span class="tag">Guardrails</span></div>
         </div>
       </div>
 
@@ -325,98 +419,104 @@
   </div>
 </section>
 
-<section id="services">
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
   <div class="wrap">
-    <h2 class="section-title">Services — Work With Me</h2>
-    <p class="section-sub">IT and automation for small businesses, especially insurance agencies, trucking
-    companies and other small teams that need things to just work. English or Spanish, remote or on-site
-    in the Tampa Bay area. <em>Se habla español.</em></p>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Websites &amp; Online Forms</h3>
-        <p>Bilingual business websites with quote, request and payment forms that send everything to one place, so nothing gets lost in an inbox.</p>
-      </div>
-      <div class="service-card">
-        <h3>Workflow &amp; AI Automation</h3>
-        <p>Automatic intake tracking, client acknowledgements, reminders and drafted replies, with a person always approving what goes out.</p>
-      </div>
-      <div class="service-card">
-        <h3>Office Network &amp; Wi-Fi</h3>
-        <p>Firewalls, switches, VLANs, Wi-Fi, cameras and cabling, designed, installed and documented.</p>
-      </div>
-      <div class="service-card">
-        <h3>Monitoring &amp; Backups</h3>
-        <p>Alerts before something breaks, and backups that are tested for real, so a bad day doesn't become a lost week.</p>
-      </div>
-    </div>
-    <div class="cta-box">
-      <p>Have a process that eats your team's time, or a network that keeps acting up? Tell me about it.</p>
-      <div class="btn-row" style="margin-top:0;">
-        <a class="btn primary" href="mailto:garciabouza90@gmail.com?subject=IT%20%2F%20automation%20project">Email Me</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/manuel-g-448984183/" target="_blank" rel="noopener">Message on LinkedIn</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="experience" class="alt">
-  <div class="wrap">
-    <h2 class="section-title">Experience</h2>
+    <div class="kicker">Experience</div>
+    <h2 class="section-title">Where I've done it</h2>
     <div class="timeline">
       <div class="timeline-item">
-        <h3>IT Specialist (Multi-Role) — Weee! Inc.</h3>
-        <div class="meta">Tampa, FL · March 2025 – Present</div>
+        <h3>IT Specialist (IT, Facilities &amp; Safety) — Weee! Inc.</h3>
+        <div class="meta">Tampa Fulfillment Center · March 2025 – Present</div>
         <ul>
-          <li>Deployed 3 warehouse facilities from the ground up to full operational readiness, as sole owner of network design, structured cabling, rack builds, wireless and camera coverage, workstation/printer setup, and equipment commissioning.</li>
-          <li>Led a formal high-availability gateway migration (Meraki MX95 → MX105) at the Tampa site, with full technical documentation and change records for stakeholder review.</li>
-          <li>Configured and supported a UniFi Dream Machine Pro with a static WAN and routed public IP block; resolved point-to-point link issues with the carrier at the demarc.</li>
-          <li>Built zero-touch MAAS provisioning for packing-station kiosks, now in production.</li>
-          <li>Configured and deployed 60+ wireless access points across three warehouse locations, ensuring enterprise-grade wireless coverage and segmentation.</li>
-          <li>Installed and commissioned 60+ IP security cameras with NVR integration, providing full-perimeter surveillance and access control visibility.</li>
-          <li>Built monitoring infrastructure (Prometheus, Grafana, Zabbix) from the ground up and proposed a company-wide rollout to headquarters.</li>
-          <li>Served as primary Tier 2 support escalation point, diagnosing and resolving network connectivity, hardware, and software issues across multi-site operations.</li>
-          <li>Managed network access control, ensuring only authorized devices and users accessed internal network services per security policy.</li>
-          <li>Coordinated facilities relocations, including independent forklift operation to reposition heavy storage rack systems.</li>
+          <li>Designed and deployed LAN/WLAN for three warehouse sites from empty shell: Cisco Meraki MX/MS/MR and Ubiquiti UniFi, VLAN segmentation, MDF/IDF racks, fiber and copper cabling, 60+ access points and 60+ IP cameras with NVR.</li>
+          <li>Led a Meraki high-availability gateway upgrade (MX95 → MX105) with full IP re-addressing and a staged cutover, with no impact on operations and full change documentation.</li>
+          <li>Configured a UniFi Dream Machine Pro with static WAN and a routed public IP block; resolved point-to-point link issues with the carrier at the demarc.</li>
+          <li>Root-cause troubleshooting across DNS, DHCP and client services, fixing problems at the network layer instead of replacing hardware.</li>
+          <li>ITIL-style change control in Jira: peer review, approvals, CAB, maintenance windows and rollback plans; firmware and CVE patching.</li>
+          <li>Built a monitoring and alerting stack (Zabbix, Grafana, Prometheus, Wazuh) on a Proxmox/Ceph cluster, and zero-touch MAAS provisioning for packing-station kiosks now in production.</li>
+          <li>Tier 2 escalation point; Visio diagrams, SOPs and weekly reports to leadership; vendor and contractor coordination.</li>
         </ul>
       </div>
       <div class="timeline-item">
-        <h3>Sysadmin &amp; Network Manager — JMJCSoftware</h3>
-        <div class="meta">Merida, Mexico · 2019 – 2024</div>
+        <h3>Low Voltage Technician — T-Solutions Corp</h3>
+        <div class="meta">Tampa, FL · January 2025 – March 2025</div>
         <ul>
-          <li>Administered a Cisco environment of 5 routers and 10 switches; VLANs, inter-VLAN routing, STP, VPN tunnels.</li>
-          <li>Managed 30 AWS EC2 instances, a production database cluster, IAM roles, S3 storage, and VPC networking; maintained 99.9% uptime SLA.</li>
-          <li>Deployed and maintained Active Directory for 150 users, managing group policy, authentication, and access control.</li>
-          <li>Deployed infrastructure automation using Ansible playbooks for configuration management and server provisioning.</li>
-          <li>Implemented and maintained backup and disaster recovery systems, conducting regular restoration drills to verify RTO/RPO compliance.</li>
-          <li>Monitored network and server performance using Zabbix and Grafana dashboards; proactively identified and resolved infrastructure bottlenecks.</li>
-          <li>Performed Linux server hardening: SSH key management, firewall rules (iptables/UFW), and audit logging.</li>
+          <li>Data center build-out: rack-mounted and cabled a Cisco Catalyst 9300 UPOE switch stack, ISR routers and firewalls; terminated hundreds of Cat6 runs onto Siemon panels.</li>
+          <li>Fusion-spliced and terminated multimode fiber backbones between MDF and IDFs.</li>
+          <li>Worked from blueprints and technical drawings; tested and troubleshot every run with cable and electrical test equipment.</li>
         </ul>
       </div>
       <div class="timeline-item">
-        <h3>Low Voltage Specialist — System Automation Pro</h3>
-        <div class="meta">Miami, FL · 2021 – 2023</div>
+        <h3>Low Voltage Technician — Outsource</h3>
+        <div class="meta">Tampa, FL · June 2024 – December 2024</div>
         <ul>
-          <li>Installed and configured AV systems, PoE IP camera networks, NVR/DVR recording systems, and perimeter security devices for commercial clients.</li>
-          <li>Performed structured cabling (Cat5E, Cat6, coaxial) and rack builds for enterprise and commercial deployments.</li>
-          <li>Conducted end-to-end infrastructure testing and connectivity verification; reported transport outages to project leads immediately upon detection.</li>
-          <li>Collaborated with OEM vendors and technical teams to integrate new technologies into existing client network environments.</li>
+          <li>Ran and terminated UTP cabling and rack-mounted network equipment for commercial installations from blueprints.</li>
+          <li>Installed, inspected and tested low-voltage systems with cable and electrical test equipment.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Network Manager / System Administrator — JMJC Software</h3>
+        <div class="meta">Mexico, remote from the U.S. from 2021 · Oct 2019 – Jan 2024</div>
+        <ul>
+          <li>Network for 150+ users: 5 routers, 10 switches, site-to-site and remote-access VPN.</li>
+          <li>Tier 2/3 support across routing and switching, VPN, firewalls, wireless and VoIP.</li>
+          <li>Cisco routing and switching, VLANs, inter-VLAN routing, STP; firewall policies (SonicWall, iptables).</li>
+          <li>Windows Server, Active Directory and Group Policy for 150 users; DNS and DHCP.</li>
+          <li>AWS: 30+ EC2 instances, production database cluster, VPC, security groups, IAM, S3; 99.9% uptime SLA.</li>
+          <li>Backup and DR with restore drills (RTO/RPO); Zabbix/Grafana monitoring; Ansible and Bash automation.</li>
+        </ul>
+      </div>
+      <div class="timeline-item">
+        <h3>Low Voltage Technician — System Automation Pro</h3>
+        <div class="meta">Miami, FL · 2021 – Oct 2023</div>
+        <ul>
+          <li>Structured cabling (fiber, Cat5e/Cat6, coax), rack and network-closet builds for commercial and residential clients.</li>
+          <li>Installed and networked AV, PoE camera/NVR, access-control and lighting-control systems.</li>
+          <li>Worked on-site with general contractors and client IT teams; tested and verified every link before handoff.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="certifications">
+<!-- ================= CERTIFICATIONS ================= -->
+<section id="certifications" class="alt">
   <div class="wrap">
+    <div class="kicker">Credentials</div>
     <h2 class="section-title">Certifications &amp; Education</h2>
-    <div class="certs-grid">
-      <div class="cert-card">Cisco CCST Networking</div>
-      <div class="cert-card">Linux Essentials (LPI)</div>
-      <div class="cert-card">Google IT Support Professional Certificate</div>
-      <div class="cert-card">Google Cybersecurity Professional Certificate</div>
-      <div class="cert-card">Certified Security Analyst (CSA)</div>
-      <div class="cert-card">CCNA 200-301 — in progress</div>
-      <div class="cert-card">B.S. Information Technology — University of Informatic Sciences, 2014</div>
+    <div class="certs-grid" style="margin-top:24px;">
+      <div class="cert-card progress">Cisco CCNA 200-301<small>In progress</small></div>
+      <div class="cert-card">Cisco Certified Support Technician (CCST) Networking<small>Cisco · 2023</small></div>
+      <div class="cert-card">Linux Essentials<small>Linux Professional Institute · 2024</small></div>
+      <div class="cert-card">Google Cybersecurity Professional Certificate<small>Google · 2024</small></div>
+      <div class="cert-card">Google IT Support Professional Certificate<small>Google · 2023</small></div>
+      <div class="cert-card">Certified Cyber Security Analyst (C3SA)<small>CyberWarfare Labs · 2025</small></div>
+      <div class="cert-card">Blue Team Fundamentals (BTF)<small>CyberWarfare Labs · 2025</small></div>
+      <div class="cert-card">Purple Teaming Fundamentals<small>CyberWarfare Labs · 2025</small></div>
+      <div class="cert-card">B.S. Information Technology<small>University of Informatic Sciences, Havana · 2014</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="kicker">Services</div>
+    <h2 class="section-title">Work with me</h2>
+    <p class="section-sub">IT and automation for small businesses, especially insurance agencies, trucking companies and small teams that need things to just work. English or Spanish, remote or on-site in the Tampa Bay area. <em>Se habla español.</em></p>
+    <div class="services-grid">
+      <div class="service-card"><h3>Office Network &amp; Wi-Fi</h3><p>Firewalls, switches, VLANs, Wi-Fi, cameras and cabling, designed, installed, labeled and documented.</p></div>
+      <div class="service-card"><h3>Websites &amp; Online Forms</h3><p>Bilingual business websites with request forms that send everything to one place, so nothing gets lost in an inbox.</p></div>
+      <div class="service-card"><h3>Workflow &amp; AI Automation</h3><p>Intake tracking, client acknowledgements, reminders and drafted replies, with a person always approving what goes out.</p></div>
+      <div class="service-card"><h3>Monitoring &amp; Backups</h3><p>Alerts before something breaks, and backups that are tested for real, so a bad day doesn't become a lost week.</p></div>
+    </div>
+    <div class="cta-box">
+      <p>Have a network that keeps acting up, or a process that eats your team's time? Tell me about it.</p>
+      <div class="btn-row">
+        <a class="btn primary" href="mailto:garciabouza90@gmail.com?subject=IT%20%2F%20network%20project">Email Me</a>
+        <a class="btn ghost" href="https://www.linkedin.com/in/manuel-g-448984183/" target="_blank" rel="noopener">Message on LinkedIn</a>
+      </div>
     </div>
   </div>
 </section>
@@ -428,9 +528,45 @@
       <a href="https://www.linkedin.com/in/manuel-g-448984183/" target="_blank" rel="noopener">LinkedIn</a>
       <a href="https://github.com/MGDevNet" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <p style="margin-top:14px;">© 2026 Manuel Garcia Bouza. Built and hosted for free on GitHub Pages.</p>
+    <p style="margin-top:14px;">© 2026 Manuel Garcia Bouza. Hand-built and hosted on GitHub Pages.</p>
   </div>
 </footer>
 
+<script>
+(function(){
+  const shots=[...document.querySelectorAll('#gallery .shot')];
+  const btns=[...document.querySelectorAll('.filters button')];
+  btns.forEach(b=>b.addEventListener('click',()=>{
+    btns.forEach(x=>x.classList.toggle('on',x===b));
+    const f=b.dataset.f;
+    shots.forEach(s=>s.classList.toggle('hide',f!=='all'&&!s.dataset.cat.split(' ').includes(f)));
+  }));
+
+  const lb=document.getElementById('lightbox'),img=document.getElementById('lbImg'),
+        title=document.getElementById('lbTitle'),desc=document.getElementById('lbDesc'),tags=document.getElementById('lbTags');
+  let cur=0;
+  const visible=()=>shots.filter(s=>!s.classList.contains('hide'));
+  function show(s){
+    const i=s.querySelector('img');
+    img.src=i.src;img.alt=i.alt;
+    title.textContent=s.querySelector('strong').textContent;
+    desc.textContent=s.querySelector('small').textContent;
+    tags.innerHTML='';
+    (s.dataset.tags||'').split(',').filter(Boolean).forEach(t=>{const e=document.createElement('span');e.className='tag green';e.textContent=t;tags.appendChild(e);});
+    cur=visible().indexOf(s);
+  }
+  function step(d){const v=visible();show(v[(cur+d+v.length)%v.length]);}
+  shots.forEach(s=>s.addEventListener('click',()=>{show(s);lb.classList.add('open');document.body.style.overflow='hidden';}));
+  function close(){lb.classList.remove('open');document.body.style.overflow='';}
+  document.getElementById('lbClose').onclick=close;
+  document.getElementById('lbPrev').onclick=e=>{e.stopPropagation();step(-1);};
+  document.getElementById('lbNext').onclick=e=>{e.stopPropagation();step(1);};
+  lb.addEventListener('click',e=>{if(e.target===lb)close();});
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();if(e.key==='ArrowRight')step(1);if(e.key==='ArrowLeft')step(-1);
+  });
+})();
+</script>
 </body>
 </html>
